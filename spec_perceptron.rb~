@@ -1,0 +1,13 @@
+require 'perceptron.rb'
+
+describe "perceptron" do
+
+  it "" do
+    #forca = JogoDeForca.new ['galinha']
+    #forca.jogar('a').should be_true
+    #forca.jogar('g').should be_true
+  end
+
+end
+
+

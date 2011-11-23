@@ -1,0 +1,12 @@
+require 'perceptron'
+
+describe Perceptron do
+
+  it do
+    #forca = JogoDeForca.new ['casa']
+#    forca.jogar('t').should_not be_true
+  end
+
+end
+
+
