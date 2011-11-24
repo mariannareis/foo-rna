@@ -1,10 +1,12 @@
 class Neuronio
 
-  def initialize(entradas, saidas_desejadas, pesos, erro)
+  attr_accessor :pesos
+
+  def initialize(entradas, saidas_desejadas)
     @entradas = entradas
     @y_desejados = saidas_desejadas
-    @pesos = pesos
-    @limite = 0
+    @pesos = []
+    @limite = 0 
     @erro = 0
     @limiar = 1
 
@@ -17,41 +19,23 @@ class Neuronio
     end
   end
 
-  def treinar(entrada, index)
+  def testar_y_desejados_versus_obtidos(entrada)
     net = 0
     for x in (0...entrada.size)
       net += entrada[x] * @pesos[x]
     end
-    if net > 0
-       @y_obtido = 1 
-    else
+    net > 0 ? @y_obtido = 1 : @y_obtido = 0
+  end
 
-      @y_obtido = 0
-    end
-   
+  def treinar(entrada, index)
+    testar_rede(entrada)
     @erro = @y_desejados[index] - @y_obtido
+
     if @erro != @limite
       for y in (0...entrada.size)
         @pesos[y] = @pesos[y] + @limiar * @erro * entrada[y]
       end
     end
-    return @erro
   end
-
-  def testar_rede(entrada)
-    net = 0
-    for x in (0...entrada.size)
-      net += entrada[x] * @pesos[x]
-    end
-    if net > 0
-       @y_obtido = 1 
-    else
-
-      @y_obtido = 0
-    end
-   
-
-  end
-
 
 end 
