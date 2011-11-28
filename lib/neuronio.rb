@@ -10,11 +10,11 @@ class Neuronio
     @erro = 0
     @limiar = 1
 
-    for x in (0..entradas[0].size) #já acrescentando o bias
+    for x in (0..entradas[0].size) #criado W, já acrescentando o bias
       @pesos << 0
     end
 
-    for x in (0...@entradas.size) #já acrescentando o bias
+    for x in (0...@entradas.size) #acrescentando um bias para cada vetor de entrada
       @entradas[x] << 1
     end
   end
