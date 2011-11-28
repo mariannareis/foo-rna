@@ -20,11 +20,11 @@ class Neuronio
   end
 
   def testar_rede(entrada)
-net = 0
+    net_teste = 0
     for y in (0...entrada.size)
-      net += entrada[y] * @pesos[y]
+      net_teste += entrada[y] * @pesos[y]
     end
-    net > 0 ? @y_obtido = 1 : @y_obtido = 0
+    net_teste > 0 ? @y_obtido = 1 : @y_obtido = 0
   end
 
   def treinar(entrada, index)
