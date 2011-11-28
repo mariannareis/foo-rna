@@ -10,7 +10,7 @@ class Neuronio
     @erro = 0
     @limiar = 1
 
-    for x in (0..@entradas.size + 1) #já acrescentando o bias
+    for x in (0..entradas[0].size) #já acrescentando o bias
       @pesos << 0
     end
 
@@ -20,15 +20,19 @@ class Neuronio
   end
 
   def testar_rede(entrada)
-    net = 0
-    for x in (0...entrada.size)
-      net += entrada[x] * @pesos[x]
+net = 0
+    for y in (0...entrada.size)
+      net += entrada[y] * @pesos[y]
     end
     net > 0 ? @y_obtido = 1 : @y_obtido = 0
   end
 
   def treinar(entrada, index)
-    testar_rede(entrada)
+    net = 0
+    for y in (0...entrada.size)
+      net += entrada[y] * @pesos[y]
+    end
+    net > 0 ? @y_obtido = 1 : @y_obtido = 0
     @erro = @y_desejados[index] - @y_obtido
 
     if @erro != @limite
