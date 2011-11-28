@@ -6,40 +6,41 @@ class Neuronio
     @entradas = entradas
     @y_desejados = saidas_desejadas
     @pesos = []
-    @limite = 0 
+    @limite = 0
     @erro = 0
     @limiar = 1
 
-    for x in (0..entradas[0].size) #criado W, já acrescentando o bias
-      @pesos << 0
-    end
+    @entradas.each { |entrada| entrada << 1 }
 
-    for x in (0...@entradas.size) #acrescentando um bias para cada vetor de entrada
-      @entradas[x] << 1
-    end
+    @pesos = [0] * entradas.first.size
   end
 
   def testar_rede(entrada)
     net_teste = 0
-    for y in (0...entrada.size)
+    (0...entrada.size).each do |y|
       net_teste += entrada[y] * @pesos[y]
     end
-    net_teste > 0 ? @y_obtido = 1 : @y_obtido = 0
+
+    net_teste > 0
   end
 
-  def treinar(entrada, index)
+    def treinar(index = 0)
     net = 0
-    for y in (0...entrada.size)
-      net += entrada[y] * @pesos[y]
+    (0...@entradas[index].size).each do |y|
+      net += @entradas[index][y] * @pesos[y]
     end
-    net > 0 ? @y_obtido = 1 : @y_obtido = 0
+    @y_obtido = (net > 0 ? 1 : 0)
     @erro = @y_desejados[index] - @y_obtido
 
     if @erro != @limite
-      for y in (0...entrada.size)
-        @pesos[y] = @pesos[y] + @limiar * @erro * entrada[y]
+      (0...@entradas[index].size).each do |y|
+        @pesos[y] = @pesos[y] + @limiar * @erro * @entradas[index][y]
       end
+      index = 0
+    else
+      index += 1
     end
+    treinar(index) unless index >= @entradas.size
   end
+end
 
-end 
