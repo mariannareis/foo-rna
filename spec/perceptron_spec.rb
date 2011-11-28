@@ -29,13 +29,13 @@ it 'treina a rede para reconhecer o numero 0' do
       entradas.treinar(@entradas[x], x) #envio a entrada e o index da entrada enviada
     end
     entradas.pesos.should == [0,-1,-1,-1,-1,0,0,-1,0,0,1,0,0,-1,-1,-1,0,0,0,0,-1,-1,-1,0,0,1,0,0,-1,0,0,-1,-1,-1,-1,0,-1]
-    entradas.testar_rede(@um1).should == 0
-    entradas.testar_rede(@um2).should == 0
+    entradas.testar_rede(@um1).should == 0    
+    entradas.testar_rede(@um2).should == 0    
     entradas.testar_rede(@um3).should == 0
-    entradas.testar_rede(@zero1).should == 0
-    entradas.testar_rede(@zero2).should == 0
-    entradas.testar_rede(@zero3).should == 0
-    entradas.testar_rede(@cinco1).should == 0
+    entradas.testar_rede(@zero1).should == 0  #deveria ser 1
+    entradas.testar_rede(@zero2).should == 0  #deveria ser 1
+    entradas.testar_rede(@zero3).should == 0  #deveria ser 1
+    entradas.testar_rede(@cinco1).should == 0 
     entradas.testar_rede(@cinco2).should == 0
     entradas.testar_rede(@cinco3).should == 0
   end
@@ -46,12 +46,12 @@ it 'treina a rede para reconhecer o numero 0' do
       entradas.treinar(@entradas[x], x) #envio a entrada e o index da entrada enviada
     end
     entradas.pesos.should == [0,1,1,1,1,0,0,1,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,1,1,1,0,1]
-    entradas.testar_rede(@um1).should == 1
-    entradas.testar_rede(@um2).should == 1
-    entradas.testar_rede(@um3).should == 1
-    entradas.testar_rede(@zero1).should == 1
-    entradas.testar_rede(@zero2).should == 1
-    entradas.testar_rede(@zero3).should == 1
+    entradas.testar_rede(@um1).should == 1    #deveria ser 0
+    entradas.testar_rede(@um2).should == 1    #deveria ser 0
+    entradas.testar_rede(@um3).should == 1    #deveria ser 0
+    entradas.testar_rede(@zero1).should == 1  #deveria ser 0
+    entradas.testar_rede(@zero2).should == 1  #deveria ser 0
+    entradas.testar_rede(@zero3).should == 1  #deveria ser 0
     entradas.testar_rede(@cinco1).should == 1
     entradas.testar_rede(@cinco2).should == 1
     entradas.testar_rede(@cinco3).should == 1

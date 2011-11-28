@@ -18,7 +18,7 @@ describe Neuronio do
 
       @y_desejado_1 = [1,1,1,0,0,0,0,0,0]
 
-      @y_desejado_0 = [1,1,1,1,1,1,0,0,0]
+      @y_desejado_0 = [0,0,0,1,1,1,0,0,0]
 
       @y_desejado_5 = [0,0,0,0,0,0,1,1,1]      
   end
